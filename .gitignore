@@ -1,0 +1,44 @@
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Config files with credentials
+config.php
+database_config.php
+
+# Logs
+*.log
+error.log
+access.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*~
+
+# Node modules (if using build tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Docker (optional - include if using)
+# docker-compose.override.yml
+
+# Database dump files (if any)
+*.sql.backup
+*.sql.gz
+
+# Cache
+__pycache__/
+*.pyc
+.cache/

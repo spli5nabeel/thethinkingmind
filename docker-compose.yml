@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # PHP with Apache
+  web:
+    image: php:8.1-apache
+    container_name: exam_simulator_web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - exam_network
+    command: >
+      bash -c "docker-php-ext-install mysqli
+      && apache2-foreground"
+
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: exam_simulator_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: exam_simulator
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    networks:
+      - exam_network
+
+  # phpMyAdmin for database management
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: exam_simulator_phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - exam_network
+
+networks:
+  exam_network:
+    driver: bridge
+
+volumes:
+  db_data:
