@@ -35,6 +35,17 @@
                 </div>
             </div>
 
+            <div class="tools-section">
+                <div class="options-grid">
+                    <div class="option-card">
+                        <div class="icon">🧰</div>
+                        <h3>Tools &amp; Utilities</h3>
+                        <p>Browse utilities and add new tools for your workflow.</p>
+                        <a href="tools_utilities.php" class="btn btn-secondary">Browse</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="info-section">
                 <h3>How It Works</h3>
                 <ol>

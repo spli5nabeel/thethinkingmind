@@ -9,6 +9,16 @@ $conn = getDBConnection();
 $message = '';
 $messageType = '';
 
+// Check for import messages from session
+if (isset($_SESSION['import_message'])) {
+    $message = $_SESSION['import_message'];
+    $messageType = $_SESSION['import_type'];
+    $import_errors = $_SESSION['import_errors'] ?? [];
+    unset($_SESSION['import_message']);
+    unset($_SESSION['import_type']);
+    unset($_SESSION['import_errors']);
+}
+
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
@@ -71,7 +81,7 @@ $questions = $conn->query("SELECT * FROM questions ORDER BY id DESC");
             <div class="header-buttons">
                 <a href="manage_categories.php" class="btn btn-secondary">📁 Manage Categories</a>
                 <a href="index.php" class="btn btn-back">← Back to Home</a>
-                <a href="logout.php" class="btn btn-danger">Logout</a>
+                <a href="logout.php" class="btn btn-logout">🚪 Logout</a>
             </div>
         </header>
 
@@ -79,9 +89,42 @@ $questions = $conn->query("SELECT * FROM questions ORDER BY id DESC");
             <div class="message <?php echo $messageType; ?>">
                 <?php echo $message; ?>
             </div>
+            <?php if (!empty($import_errors)): ?>
+                <div class="message error" style="margin-top: 20px;">
+                    <strong>Import Errors (<?php echo count($import_errors); ?>):</strong>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <?php foreach ($import_errors as $error): ?>
+                            <li><?php echo htmlspecialchars($error); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
 
         <main>
+            <section class="admin-section">
+                <h2>📤 Import Questions from CSV</h2>
+                <form method="POST" enctype="multipart/form-data" action="import_csv.php" class="csv-upload-form">
+                    <div class="csv-info">
+                        <h4>CSV Format Requirements:</h4>
+                        <p><strong>Column order:</strong> question, option_a, option_b, option_c, option_d, correct_answer, category, difficulty</p>
+                        <p><strong>Correct Answer:</strong> Use A, B, C, or D</p>
+                        <p><strong>Difficulty:</strong> Easy, Medium, or Hard</p>
+                        <p><strong>Example CSV:</strong></p>
+                        <pre>question,option_a,option_b,option_c,option_d,correct_answer,category,difficulty
+"What is the capital of France?","London","Paris","Berlin","Madrid","B","Geography","Easy"
+"Which is the largest planet?","Mars","Jupiter","Saturn","Venus","B","Science","Medium"</pre>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="csv_file">Select CSV File:</label>
+                        <input type="file" name="csv_file" id="csv_file" accept=".csv" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-secondary">Import Questions</button>
+                </form>
+            </section>
+
             <section class="admin-section">
                 <h2>Add New Question</h2>
                 <form method="POST" class="question-form">
