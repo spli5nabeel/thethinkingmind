@@ -23,13 +23,21 @@ ADD FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL;
 
 -- Create default admin user (password: admin123)
 INSERT INTO users (username, email, password_hash, full_name, role) 
-VALUES ('admin', 'admin@example.com', '$2y$10$YourHashedPasswordHere', 'Administrator', 'admin')
-ON DUPLICATE KEY UPDATE username=username;
+VALUES ('admin', 'admin@example.com', '$2y$10$Dm283oVvjppG.ku5TaL8au0G/hr0vVykImQ1t1H0XY4Kb4VK4i/0.', 'Administrator', 'admin')
+ON DUPLICATE KEY UPDATE
+password_hash=VALUES(password_hash),
+full_name=VALUES(full_name),
+role=VALUES(role),
+is_active=1;
 
 -- Create a sample student user (password: student123)
 INSERT INTO users (username, email, password_hash, full_name, role) 
-VALUES ('student', 'student@example.com', '$2y$10$YourHashedPasswordHere', 'Sample Student', 'student')
-ON DUPLICATE KEY UPDATE username=username;
+VALUES ('student', 'student@example.com', '$2y$10$B9qT.346jzM.maGgsgivIeLn9dqbHIJogq8C2D.QLXnsD.hXaC3Nu', 'Sample Student', 'student')
+ON DUPLICATE KEY UPDATE
+password_hash=VALUES(password_hash),
+full_name=VALUES(full_name),
+role=VALUES(role),
+is_active=1;
 
 -- User sessions table for better session management
 CREATE TABLE IF NOT EXISTS user_sessions (

@@ -1119,30 +1119,6 @@ footer {
     font-weight: 600;
 }
 
-.demo-credentials {
-    background: var(--light-color);
-    padding: 20px;
-    border-radius: var(--border-radius);
-    margin-top: 25px;
-}
-
-.demo-credentials h4 {
-    margin-bottom: 10px;
-    color: var(--dark-color);
-}
-
-.demo-credentials p {
-    margin: 8px 0;
-    font-size: 0.9em;
-}
-
-.demo-credentials code {
-    background: white;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-family: monospace;
-}
-
 /* Dashboard */
 .user-info-card {
     display: flex;

@@ -90,12 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <button type="submit" class="btn btn-admin btn-large">Login as Admin</button>
                     </form>
-
-                    <div class="demo-credentials">
-                        <h4>Demo Admin Account:</h4>
-                        <p><strong>Username:</strong> <code>admin</code></p>
-                        <p><strong>Password:</strong> <code>admin123</code></p>
-                    </div>
                 </div>
             </div>
 
