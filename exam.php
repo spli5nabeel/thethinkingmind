@@ -5,7 +5,10 @@ $conn = getDBConnection();
 
 // Get category filter if provided
 $category = isset($_GET['category']) ? urldecode($conn->real_escape_string($_GET['category'])) : null;
+$difficulty = isset($_GET['difficulty']) ? $conn->real_escape_string($_GET['difficulty']) : null;
+
 $category_name = $category ? $category : "All Subjects";
+$difficulty_display = $difficulty ? ucfirst($difficulty) : "Mixed";
 
 // Get question count if provided, otherwise use default from config
 $question_count = isset($_GET['question_count']) ? intval($_GET['question_count']) : QUESTIONS_PER_EXAM;
@@ -46,8 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_exam'])) {
     exit();
 }
 
-// Fetch random questions (filtered by category if specified)
-if ($category) {
+// Fetch random questions (filtered by category and difficulty if specified)
+if ($category && $difficulty) {
+    $questions = $conn->query("SELECT * FROM questions WHERE category = '$category' AND difficulty = '$difficulty' ORDER BY RAND() LIMIT " . $question_count);
+} else if ($category) {
     $questions = $conn->query("SELECT * FROM questions WHERE category = '$category' ORDER BY RAND() LIMIT " . $question_count);
 } else {
     $questions = $conn->query("SELECT * FROM questions ORDER BY RAND() LIMIT " . $question_count);
@@ -70,7 +75,7 @@ if ($questions->num_rows === 0) {
     <div class="container">
         <header>
             <h1>🧠 Knowledge Assessment</h1>
-            <p class="subtitle">Category: <?php echo htmlspecialchars($category_name); ?></p>
+            <p class="subtitle">Category: <?php echo htmlspecialchars($category_name); ?> • Difficulty: <?php echo htmlspecialchars($difficulty_display); ?></p>
             <div class="header-buttons">
                 <a href="index.php" class="btn btn-back">Home</a>
             </div>
@@ -80,6 +85,9 @@ if ($questions->num_rows === 0) {
             <div class="exam-info">
                 <div class="info-item">
                     <strong>Subject:</strong> <?php echo htmlspecialchars($category_name); ?>
+                </div>
+                <div class="info-item">
+                    <strong>Difficulty:</strong> <?php echo htmlspecialchars($difficulty_display); ?>
                 </div>
                 <div class="info-item">
                     <strong>Total Questions:</strong> <?php echo $questions->num_rows; ?>
