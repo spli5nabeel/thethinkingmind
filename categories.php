@@ -48,8 +48,10 @@ $categories = $conn->query("
             // Fetch category types from database
             $metadata_result = $conn->query("SELECT category_name, category_type FROM category_metadata");
             $category_types = [];
-            while ($row = $metadata_result->fetch_assoc()) {
-                $category_types[$row['category_name']] = $row['category_type'];
+            if ($metadata_result) {
+                while ($row = $metadata_result->fetch_assoc()) {
+                    $category_types[$row['category_name']] = $row['category_type'];
+                }
             }
             
             // Default category mapping for existing categories without metadata
