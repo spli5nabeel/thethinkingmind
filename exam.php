@@ -4,8 +4,13 @@ require_once 'config.php';
 $conn = getDBConnection();
 
 // Get category filter if provided
-$category = isset($_GET['category']) ? $conn->real_escape_string($_GET['category']) : null;
+$category = isset($_GET['category']) ? urldecode($conn->real_escape_string($_GET['category'])) : null;
 $category_name = $category ? $category : "All Subjects";
+
+// Get question count if provided, otherwise use default from config
+$question_count = isset($_GET['question_count']) ? intval($_GET['question_count']) : QUESTIONS_PER_EXAM;
+// Validate question count (between 5 and 50)
+$question_count = max(5, min(50, $question_count));
 
 // Handle exam submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_exam'])) {
@@ -43,9 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_exam'])) {
 
 // Fetch random questions (filtered by category if specified)
 if ($category) {
-    $questions = $conn->query("SELECT * FROM questions WHERE category = '$category' ORDER BY RAND() LIMIT " . QUESTIONS_PER_EXAM);
+    $questions = $conn->query("SELECT * FROM questions WHERE category = '$category' ORDER BY RAND() LIMIT " . $question_count);
 } else {
-    $questions = $conn->query("SELECT * FROM questions ORDER BY RAND() LIMIT " . QUESTIONS_PER_EXAM);
+    $questions = $conn->query("SELECT * FROM questions ORDER BY RAND() LIMIT " . $question_count);
 }
 
 if ($questions->num_rows === 0) {
@@ -67,7 +72,6 @@ if ($questions->num_rows === 0) {
             <h1>🧠 Knowledge Assessment</h1>
             <p class="subtitle">Category: <?php echo htmlspecialchars($category_name); ?></p>
             <div class="header-buttons">
-                <a href="categories.php" class="btn btn-back">← Change Subject</a>
                 <a href="index.php" class="btn btn-back">Home</a>
             </div>
         </header>

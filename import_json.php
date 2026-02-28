@@ -264,8 +264,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['json_file'])) {
             <p class="subtitle">Bulk upload exam questions from a JSON file</p>
             <div class="header-buttons">
                 <a href="admin.php" class="btn btn-back">← Back to Admin</a>
-                <a href="index.php" class="btn btn-back">Home</a>
-                <a href="logout.php" class="btn btn-logout">Logout</a>
+                <a href="logout.php" class="btn btn-danger">Logout</a>
             </div>
         </header>
 

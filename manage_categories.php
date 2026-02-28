@@ -217,7 +217,6 @@ $total_categories = $categories->num_rows;
             <p class="subtitle">Organize your exam questions by subject</p>
             <div class="header-buttons">
                 <a href="admin.php" class="btn btn-back">← Back to Admin</a>
-                <a href="index.php" class="btn btn-back">Home</a>
                 <a href="logout.php" class="btn btn-danger">Logout</a>
             </div>
         </header>
