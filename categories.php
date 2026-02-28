@@ -104,10 +104,10 @@ $categories = $conn->query("
             }
             ?>
 
-            <!-- IT ASSESSMENTS SECTION -->
+            <!-- TECH ASSESSMENTS SECTION -->
             <section class="assessment-section">
                 <div class="section-header">
-                    <h2 class="section-title">💻 IT & Technology Assessments</h2>
+                    <h2 class="section-title">💻 Tech Assessments</h2>
                     <p class="section-subtitle">Test your knowledge in programming, databases, and technology fundamentals</p>
                 </div>
                 <div class="categories-grid">
