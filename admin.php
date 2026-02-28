@@ -79,6 +79,7 @@ $questions = $conn->query("SELECT * FROM questions ORDER BY id DESC");
             <h1>⚙️ Admin Panel</h1>
             <p class="subtitle">Manage exam questions and categories</p>
             <div class="header-buttons">
+                <a href="import_json.php" class="btn btn-secondary">📥 Import JSON</a>
                 <a href="manage_categories.php" class="btn btn-secondary">📁 Manage Categories</a>
                 <a href="index.php" class="btn btn-back">← Back to Home</a>
                 <a href="logout.php" class="btn btn-logout">🚪 Logout</a>
