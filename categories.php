@@ -21,6 +21,13 @@ $categories = $conn->query("
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Assessment - The Thinking Mind</title>
+    <meta name="description" content="Browse exam categories and start a focused knowledge assessment on The Thinking Mind.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/categories.php">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Assessment Categories - The Thinking Mind">
+    <meta property="og:description" content="Choose a subject category and start your practice exam.">
+    <meta property="og:url" content="https://thethinkingmind.net/categories.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

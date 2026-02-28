@@ -24,6 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guest Mode - Exam Simulator</title>
+    <meta name="description" content="Enter guest mode to take practice exams on The Thinking Mind.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/guest.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

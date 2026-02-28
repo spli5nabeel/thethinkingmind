@@ -6,6 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tools & Utilities - The Thinking Mind</title>
+    <meta name="description" content="Use practical learning tools like unit converter, date calculator, and AI prompt generator on The Thinking Mind.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/tools_utilities.php">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tools & Utilities - The Thinking Mind">
+    <meta property="og:description" content="Access utility tools to support your assessments and study workflow.">
+    <meta property="og:url" content="https://thethinkingmind.net/tools_utilities.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

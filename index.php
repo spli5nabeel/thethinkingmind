@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Thinking Mind - Knowledge Assessment Platform</title>
+        <meta name="description" content="The Thinking Mind is an online exam simulator to practice subject-based assessments, test your knowledge, and improve performance with instant feedback.">
+        <meta name="robots" content="index,follow">
+        <link rel="canonical" href="https://thethinkingmind.net/index.php">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="The Thinking Mind - Knowledge Assessment Platform">
+        <meta property="og:description" content="Practice assessments by category, track your learning, and strengthen exam readiness.">
+        <meta property="og:url" content="https://thethinkingmind.net/index.php">
+        <meta property="og:site_name" content="The Thinking Mind">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="The Thinking Mind - Knowledge Assessment Platform">
+        <meta name="twitter:description" content="Practice assessments by category and improve exam performance.">
     <link rel="stylesheet" href="css/style.css">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "The Thinking Mind",
+            "url": "https://thethinkingmind.net/",
+            "description": "Online knowledge assessment platform with practice exams and learning tools."
+        }
+        </script>
 </head>
 <body>
     <div class="container">

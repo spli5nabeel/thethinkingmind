@@ -40,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Exam Simulator</title>
+    <meta name="description" content="Create an account on The Thinking Mind to save exam results and track learning progress.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/register.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
