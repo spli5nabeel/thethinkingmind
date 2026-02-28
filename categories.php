@@ -48,10 +48,8 @@ $categories = $conn->query("
             // Fetch category types from database
             $metadata_result = $conn->query("SELECT category_name, category_type FROM category_metadata");
             $category_types = [];
-            if ($metadata_result) {
-                while ($row = $metadata_result->fetch_assoc()) {
-                    $category_types[$row['category_name']] = $row['category_type'];
-                }
+            while ($row = $metadata_result->fetch_assoc()) {
+                $category_types[$row['category_name']] = $row['category_type'];
             }
             
             // Default category mapping for existing categories without metadata
@@ -128,10 +126,9 @@ $categories = $conn->query("
                                 </span>
                             </div>
                             <div class="category-actions">
-                                <a href="exam.php?category=<?php echo urlencode($cat['category']); ?>" 
-                                   class="btn btn-primary">
+                                <button type="button" class="btn btn-primary" onclick="openQuestionModal('<?php echo urlencode($cat['category']); ?>')">
                                     Start Exam
-                                </a>
+                                </button>
                             </div>
                         </div>
                     <?php 
@@ -163,36 +160,15 @@ $categories = $conn->query("
                                 </span>
                             </div>
                             <div class="category-actions">
-                                <a href="exam.php?category=<?php echo urlencode($cat['category']); ?>" 
-                                   class="btn btn-primary">
+                                <button type="button" class="btn btn-primary" onclick="openQuestionModal('<?php echo urlencode($cat['category']); ?>')">
                                     Start Exam
-                                </a>
+                                </button>
                             </div>
                         </div>
                     <?php 
                         endif;
                     endforeach; 
                     ?>
-                </div>
-            </section>
-
-            <!-- ALL SUBJECTS OPTION -->
-            <section class="assessment-section">
-                <div class="categories-grid">
-                    <div class="category-card featured" style="grid-column: 1 / -1; max-width: 400px; margin: 0 auto;">
-                        <div class="category-icon">🌟</div>
-                        <h3>All Subjects</h3>
-                        <div class="category-stats">
-                            <span class="stat-item">
-                                <strong>Mixed</strong> questions from all categories
-                            </span>
-                        </div>
-                        <div class="category-actions">
-                            <a href="exam.php" class="btn btn-primary">
-                                Start Mixed Exam
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -209,6 +185,71 @@ $categories = $conn->query("
             </div>
         </main>
     </div>
+
+    <!-- Question Count Selection Modal -->
+    <div id="questionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeQuestionModal()">&times;</span>
+            <h3 style="margin-bottom: 20px;">How many questions do you want?</h3>
+            
+            <form id="questionForm" method="GET" action="exam.php">
+                <input type="hidden" id="categoryInput" name="category">
+                
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label for="questionCount">Number of Questions:</label>
+                    <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+                        <input type="range" id="questionCountSlider" name="question_count" 
+                               min="5" max="50" value="10" step="5"
+                               style="flex: 1; cursor: pointer;">
+                        <span id="countDisplay" style="font-size: 1.2em; font-weight: bold; min-width: 50px;">10</span>
+                    </div>
+                    <p style="margin-top: 10px; color: #999; font-size: 0.9em;">
+                        Adjust the slider to select between 5 and 50 questions
+                    </p>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeQuestionModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Start Assessment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentCategory = '';
+
+        function openQuestionModal(category) {
+            currentCategory = category;
+            document.getElementById('categoryInput').value = category;
+            document.getElementById('questionModal').style.display = 'block';
+            // Set default to 10
+            document.getElementById('questionCountSlider').value = 10;
+            document.getElementById('countDisplay').textContent = '10';
+        }
+
+        function closeQuestionModal() {
+            document.getElementById('questionModal').style.display = 'none';
+        }
+
+        // Update display when slider changes
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('questionCountSlider');
+            if (slider) {
+                slider.addEventListener('input', function() {
+                    document.getElementById('countDisplay').textContent = this.value;
+                });
+            }
+        });
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('questionModal');
+            if (event.target == modal) {
+                closeQuestionModal();
+            }
+        }
+    </script>
 </body>
 </html>
 
