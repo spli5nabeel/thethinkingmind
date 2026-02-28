@@ -44,57 +44,155 @@ $categories = $conn->query("
                 <p>Select a topic to evaluate your mastery. Each assessment features carefully curated questions to challenge your understanding.</p>
             </div>
 
-            <div class="categories-grid">
-                <?php 
-                $icons = [
-                    'PHP Basics' => '🔵',
-                    'Database' => '🗄️',
-                    'Functions' => '⚙️',
-                    'Forms' => '📝',
-                    'Operators' => '➗',
-                    'String Functions' => '📄',
-                    'Arrays' => '📊',
-                    'OOP' => '🎯',
-                    'Security' => '🔒',
-                    'General' => '📖'
-                ];
+            <?php 
+            // Fetch category types from database
+            $metadata_result = $conn->query("SELECT category_name, category_type FROM category_metadata");
+            $category_types = [];
+            while ($row = $metadata_result->fetch_assoc()) {
+                $category_types[$row['category_name']] = $row['category_type'];
+            }
+            
+            // Default category mapping for existing categories without metadata
+            $default_types = [
+                'KCSA' => 'IT',
+                'Maths' => 'Academic',
+                'Python' => 'Academic',
+                'PHP Basics' => 'IT',
+                'Database' => 'IT',
+                'General' => 'Academic'
+            ];
+            
+            $icons = [
+                'PHP Basics' => '🔵',
+                'Database' => '🗄️',
+                'Functions' => '⚙️',
+                'Forms' => '📝',
+                'Operators' => '➗',
+                'String Functions' => '📄',
+                'Arrays' => '📊',
+                'OOP' => '🎯',
+                'Security' => '🔒',
+                'General' => '📖',
+                'Mathematics' => '🔢',
+                'Science' => '🔬',
+                'History' => '📚',
+                'Literature' => '📖',
+                'Biology' => '🧬',
+                'Chemistry' => '⚗️',
+                'Physics' => '⚛️',
+                'English' => '✍️',
+                'Economics' => '💰',
+                'KCSA' => '🎓',
+                'Maths' => '🔢',
+                'Python' => '🐍'
+            ];
+            
+            // Reorganize categories by type from database
+            $all_cats = [];
+            $categories_by_type = ['IT' => [], 'Academic' => []];
+            
+            while ($cat = $categories->fetch_assoc()) {
+                $all_cats[$cat['category']] = $cat;
                 
-                while ($cat = $categories->fetch_assoc()): 
-                    $icon = isset($icons[$cat['category']]) ? $icons[$cat['category']] : '📚';
-                ?>
-                    <div class="category-card">
-                        <div class="category-icon"><?php echo $icon; ?></div>
-                        <h3><?php echo htmlspecialchars($cat['category']); ?></h3>
+                // Determine category type
+                $type = $category_types[$cat['category']] ?? $default_types[$cat['category']] ?? 'Academic';
+                
+                if (!isset($categories_by_type[$type])) {
+                    $categories_by_type[$type] = [];
+                }
+                $categories_by_type[$type][] = $cat['category'];
+            }
+            ?>
+
+            <!-- IT ASSESSMENTS SECTION -->
+            <section class="assessment-section">
+                <div class="section-header">
+                    <h2 class="section-title">💻 IT & Technology Assessments</h2>
+                    <p class="section-subtitle">Test your knowledge in programming, databases, and technology fundamentals</p>
+                </div>
+                <div class="categories-grid">
+                    <?php 
+                    foreach ($categories_by_type['IT'] as $cat_name):
+                        if (isset($all_cats[$cat_name])): 
+                            $cat = $all_cats[$cat_name];
+                            $icon = isset($icons[$cat_name]) ? $icons[$cat_name] : '📚';
+                    ?>
+                        <div class="category-card">
+                            <div class="category-icon"><?php echo $icon; ?></div>
+                            <h3><?php echo htmlspecialchars($cat['category']); ?></h3>
+                            <div class="category-stats">
+                                <span class="stat-item">
+                                    <strong><?php echo $cat['question_count']; ?></strong> questions
+                                </span>
+                            </div>
+                            <div class="category-actions">
+                                <a href="exam.php?category=<?php echo urlencode($cat['category']); ?>" 
+                                   class="btn btn-primary">
+                                    Start Exam
+                                </a>
+                            </div>
+                        </div>
+                    <?php 
+                        endif;
+                    endforeach; 
+                    ?>
+                </div>
+            </section>
+
+            <!-- ACADEMIC ASSESSMENTS SECTION -->
+            <section class="assessment-section">
+                <div class="section-header">
+                    <h2 class="section-title">📚 Academic Assessments</h2>
+                    <p class="section-subtitle">Explore subjects across science, humanities, and general knowledge</p>
+                </div>
+                <div class="categories-grid">
+                    <?php 
+                    foreach ($categories_by_type['Academic'] as $cat_name):
+                        if (isset($all_cats[$cat_name])): 
+                            $cat = $all_cats[$cat_name];
+                            $icon = isset($icons[$cat_name]) ? $icons[$cat_name] : '📚';
+                    ?>
+                        <div class="category-card">
+                            <div class="category-icon"><?php echo $icon; ?></div>
+                            <h3><?php echo htmlspecialchars($cat['category']); ?></h3>
+                            <div class="category-stats">
+                                <span class="stat-item">
+                                    <strong><?php echo $cat['question_count']; ?></strong> questions
+                                </span>
+                            </div>
+                            <div class="category-actions">
+                                <a href="exam.php?category=<?php echo urlencode($cat['category']); ?>" 
+                                   class="btn btn-primary">
+                                    Start Exam
+                                </a>
+                            </div>
+                        </div>
+                    <?php 
+                        endif;
+                    endforeach; 
+                    ?>
+                </div>
+            </section>
+
+            <!-- ALL SUBJECTS OPTION -->
+            <section class="assessment-section">
+                <div class="categories-grid">
+                    <div class="category-card featured" style="grid-column: 1 / -1; max-width: 400px; margin: 0 auto;">
+                        <div class="category-icon">🌟</div>
+                        <h3>All Subjects</h3>
                         <div class="category-stats">
                             <span class="stat-item">
-                                <strong><?php echo $cat['question_count']; ?></strong> questions
+                                <strong>Mixed</strong> questions from all categories
                             </span>
                         </div>
                         <div class="category-actions">
-                            <a href="exam.php?category=<?php echo urlencode($cat['category']); ?>" 
-                               class="btn btn-primary">
-                                Start Exam
+                            <a href="exam.php" class="btn btn-primary">
+                                Start Mixed Exam
                             </a>
                         </div>
                     </div>
-                <?php endwhile; ?>
-
-                <!-- All Subjects Option -->
-                <div class="category-card featured">
-                    <div class="category-icon">🌟</div>
-                    <h3>All Subjects</h3>
-                    <div class="category-stats">
-                        <span class="stat-item">
-                            <strong>Mixed</strong> questions
-                        </span>
-                    </div>
-                    <div class="category-actions">
-                        <a href="exam.php" class="btn btn-primary">
-                            Start Mixed Exam
-                        </a>
-                    </div>
                 </div>
-            </div>
+            </section>
 
             <div class="exam-options">
                 <h3>Exam Settings</h3>

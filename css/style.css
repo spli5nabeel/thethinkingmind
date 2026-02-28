@@ -999,6 +999,39 @@ footer {
     margin-top: 20px;
 }
 
+/* Assessment Section Styles */
+.assessment-section {
+    margin-bottom: 50px;
+}
+
+.assessment-section:not(:first-of-type) {
+    padding-top: 40px;
+    border-top: 3px solid var(--light-color);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.section-subtitle {
+    font-size: 1.05em;
+    color: #666;
+    margin-top: 8px;
+    font-weight: 400;
+}
+
 .exam-options {
     background: var(--light-color);
     padding: 30px;

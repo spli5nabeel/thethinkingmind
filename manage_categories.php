@@ -8,15 +8,27 @@ $conn = getDBConnection();
 $message = '';
 $messageType = '';
 
+// Ensure category_metadata table exists
+$conn->query("CREATE TABLE IF NOT EXISTS category_metadata (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(255) UNIQUE NOT NULL,
+    category_type ENUM('IT', 'Academic') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)");
+
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
         switch ($_POST['action']) {
             case 'create':
                 $new_category = $conn->real_escape_string(trim($_POST['new_category_name']));
+                $category_type = $conn->real_escape_string($_POST['category_type']);
                 
                 if (empty($new_category)) {
                     $message = "Category name cannot be empty!";
+                    $messageType = "error";
+                } elseif (!in_array($category_type, ['IT', 'Academic'])) {
+                    $message = "Invalid category type!";
                     $messageType = "error";
                 } else {
                     // Check if category already exists
@@ -32,7 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 VALUES ('[Placeholder] Add your first question for this category', 'Option A', 'Option B', 'Option C', 'Option D', 'A', '$new_category', 'Easy')";
                         
                         if ($conn->query($sql)) {
-                            $message = "Category '$new_category' created successfully! Add more questions from the Admin Panel.";
+                            // Store category type metadata
+                            $meta_sql = "INSERT INTO category_metadata (category_name, category_type) VALUES ('$new_category', '$category_type')";
+                            $conn->query($meta_sql);
+                            
+                            $message = "Category '$new_category' created successfully as " . strtoupper($category_type) . "! Add more questions from the Admin Panel.";
                             $messageType = "success";
                         } else {
                             $message = "Error creating category: " . $conn->error;
@@ -227,6 +243,14 @@ $total_categories = $categories->num_rows;
                                    id="new_category_name" 
                                    placeholder="e.g., JavaScript, Python, Data Structures..." 
                                    required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category_type">Category Type:</label>
+                            <select name="category_type" id="category_type" required>
+                                <option value="">Select Type...</option>
+                                <option value="IT">💻 IT & Technology</option>
+                                <option value="Academic">📚 Academic</option>
+                            </select>
                         </div>
                         <div class="form-group" style="display: flex; align-items: flex-end;">
                             <button type="submit" class="btn btn-primary">Create Category</button>
