@@ -141,8 +141,6 @@ $conn = getDBConnection();
 
             <div class="action-buttons">
                 <a href="pdf_export.php" class="btn btn-primary" title="Download your results as PDF">📥 Download as PDF</a>
-                <a href="categories.php" class="btn btn-secondary">Take Another Exam</a>
-                <a href="index.php" class="btn btn-secondary">Back to Home</a>
             </div>
         </main>
     </div>

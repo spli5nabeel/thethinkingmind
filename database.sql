@@ -39,6 +39,33 @@ CREATE TABLE IF NOT EXISTS exam_answers (
     FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
 );
 
+-- Table for storing category metadata
+CREATE TABLE IF NOT EXISTS category_metadata (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(100) UNIQUE NOT NULL,
+    category_type ENUM('IT', 'Academic', 'Science', 'Language', 'Other') DEFAULT 'Academic',
+    description TEXT,
+    icon VARCHAR(10),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert default category metadata
+INSERT INTO category_metadata (category_name, category_type, icon) VALUES
+('PHP Basics', 'IT', '🔵'),
+('Database', 'IT', '🗄️'),
+('Functions', 'IT', '⚙️'),
+('Forms', 'IT', '📝'),
+('Operators', 'Academic', '➗'),
+('String Functions', 'IT', '📄'),
+('Arrays', 'IT', '📊'),
+('OOP', 'IT', '🎯'),
+('Security', 'IT', '🔒'),
+('General', 'Academic', '📖'),
+('KCSA', 'IT', '☁️'),
+('Maths', 'Academic', '🔢'),
+('Python', 'IT', '🐍')
+ON DUPLICATE KEY UPDATE category_type=VALUES(category_type), icon=VALUES(icon);
+
 -- Insert sample questions
 INSERT INTO questions (question_text, option_a, option_b, option_c, option_d, correct_answer, category, difficulty) VALUES
 ('What does PHP stand for?', 'Personal Home Page', 'Hypertext Preprocessor', 'Private Home Page', 'Public Hypertext Processor', 'B', 'PHP Basics', 'Easy'),
