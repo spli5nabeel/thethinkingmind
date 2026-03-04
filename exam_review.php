@@ -26,6 +26,9 @@ $conn = getDBConnection();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assessment Results - The Thinking Mind</title>
+    <meta name="description" content="Assessment results and answer review page.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/exam_review.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

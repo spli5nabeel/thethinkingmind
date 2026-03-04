@@ -6,6 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date Calculator - The Thinking Mind</title>
+    <meta name="description" content="Calculate date differences and add or subtract days using the date calculator on The Thinking Mind.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/date_calculator.php">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Date Calculator - The Thinking Mind">
+    <meta property="og:description" content="Find date differences and perform quick date arithmetic.">
+    <meta property="og:url" content="https://thethinkingmind.net/date_calculator.php">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Date Calculator - The Thinking Mind">
+    <meta name="twitter:description" content="Find date differences and perform quick date arithmetic.">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

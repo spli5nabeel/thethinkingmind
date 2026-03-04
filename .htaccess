@@ -1,9 +1,19 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Canonical home URL
+    RewriteRule ^index\.php$ / [L,R=301]
+
     # Force HTTPS
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Enforce noindex at server level for internal/auth/admin pages
+<IfModule mod_headers.c>
+    <FilesMatch "^(admin|admin_login|dashboard|manage_categories|login|register|guest|exam|exam_review|review|results|my_results)\.php$">
+        Header set X-Robots-Tag "noindex, follow"
+    </FilesMatch>
 </IfModule>
 
 # Prevent directory listing

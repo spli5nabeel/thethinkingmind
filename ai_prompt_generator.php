@@ -6,6 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Prompt Generator - The Thinking Mind</title>
+    <meta name="description" content="Generate clear, structured AI prompts for studying, assignments, and assessment preparation on The Thinking Mind.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/ai_prompt_generator.php">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Prompt Generator - The Thinking Mind">
+    <meta property="og:description" content="Build high-quality AI prompts for learning and productivity.">
+    <meta property="og:url" content="https://thethinkingmind.net/ai_prompt_generator.php">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI Prompt Generator - The Thinking Mind">
+    <meta name="twitter:description" content="Build high-quality AI prompts for learning and productivity.">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

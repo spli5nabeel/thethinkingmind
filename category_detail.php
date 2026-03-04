@@ -97,6 +97,7 @@ $difficulty_info = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($category); ?> Assessments - The Thinking Mind</title>
     <meta name="description" content="Take <?php echo htmlspecialchars($category); ?> assessments with different difficulty levels.">
+    <meta name="robots" content="index,follow">
     <link rel="canonical" href="https://thethinkingmind.net/category_detail.php?category=<?php echo urlencode($category); ?>">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo htmlspecialchars($category); ?> Assessments">

@@ -29,6 +29,9 @@ $stats = $conn->query("
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Results - Exam Simulator</title>
+    <meta name="description" content="Personal exam history and performance insights for logged-in users.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/my_results.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

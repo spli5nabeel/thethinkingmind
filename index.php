@@ -6,11 +6,11 @@
     <title>The Thinking Mind - Knowledge Assessment Platform</title>
         <meta name="description" content="The Thinking Mind is an online exam simulator to practice subject-based assessments, test your knowledge, and improve performance with instant feedback.">
         <meta name="robots" content="index,follow">
-        <link rel="canonical" href="https://thethinkingmind.net/index.php">
+        <link rel="canonical" href="https://thethinkingmind.net/">
         <meta property="og:type" content="website">
         <meta property="og:title" content="The Thinking Mind - Knowledge Assessment Platform">
         <meta property="og:description" content="Practice assessments by category, track your learning, and strengthen exam readiness.">
-        <meta property="og:url" content="https://thethinkingmind.net/index.php">
+        <meta property="og:url" content="https://thethinkingmind.net/">
         <meta property="og:site_name" content="The Thinking Mind">
         <meta name="twitter:card" content="summary">
         <meta name="twitter:title" content="The Thinking Mind - Knowledge Assessment Platform">
