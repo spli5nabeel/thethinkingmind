@@ -6,5 +6,15 @@
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
+# Front controller routing without requiring strict mod_rewrite support
+DirectoryIndex router.php
+FallbackResource /router.php
+ErrorDocument 404 /router.php
+
 # Prevent directory listing
 Options -Indexes
+
+# Prevent direct web access to internal/bootstrap files
+<FilesMatch "^(config|auth|config\.production)\.php$">
+    Require all denied
+</FilesMatch>
