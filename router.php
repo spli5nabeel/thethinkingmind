@@ -1,4 +1,12 @@
 <?php
+// Fix Apache FallbackResource query string issue
+// When FallbackResource rewrites to router.php, QUERY_STRING is lost but REQUEST_URI preserves it
+if (empty($_SERVER['QUERY_STRING']) && strpos($_SERVER['REQUEST_URI'], '?') !== false) {
+    list($path_part, $query_part) = explode('?', $_SERVER['REQUEST_URI'], 2);
+    $_SERVER['QUERY_STRING'] = $query_part;
+    parse_str($query_part, $_GET);
+}
+
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 $route = ltrim($path, '/');
 
