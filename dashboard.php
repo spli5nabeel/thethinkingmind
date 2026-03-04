@@ -58,6 +58,9 @@ $activities = $conn->query("
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Exam Simulator</title>
+    <meta name="description" content="User dashboard with exam progress, performance, and activity insights.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/dashboard.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

@@ -6,6 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unit Converter - The Thinking Mind</title>
+    <meta name="description" content="Convert length, weight, and temperature units quickly with The Thinking Mind unit converter tool.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/unit_converter.php">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Unit Converter - The Thinking Mind">
+    <meta property="og:description" content="Convert common units for study and daily tasks.">
+    <meta property="og:url" content="https://thethinkingmind.net/unit_converter.php">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Unit Converter - The Thinking Mind">
+    <meta name="twitter:description" content="Convert common units for study and daily tasks.">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

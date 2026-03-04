@@ -50,6 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Portal - The Thinking Mind</title>
+    <meta name="description" content="Administrator login for The Thinking Mind platform management.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/admin_login.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

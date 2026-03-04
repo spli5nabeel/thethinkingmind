@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - seo
+
+jobs:
+  php-quality-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Lint PHP files
+        run: |
+          find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
+
+      - name: Verify SEO core files exist
+        run: |
+          test -f robots.txt
+          test -f sitemap.xml
+
+      - name: Validate sitemap.xml structure and URLs
+        run: |
+          python3 - << 'PY'
+          import xml.etree.ElementTree as ET
+
+          tree = ET.parse('sitemap.xml')
+          root = tree.getroot()
+
+          ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          urls = root.findall('sm:url/sm:loc', ns)
+
+          if not urls:
+              raise SystemExit('sitemap.xml has no <loc> entries')
+
+          for loc in urls:
+              value = (loc.text or '').strip()
+              if not value.startswith('https://thethinkingmind.net/'):
+                  raise SystemExit(f'Invalid sitemap URL: {value}')
+
+          print(f'sitemap.xml valid with {len(urls)} URLs')
+          PY

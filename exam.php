@@ -71,6 +71,9 @@ if ($questions->num_rows === 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assessment - The Thinking Mind</title>
+    <meta name="description" content="Assessment session page for The Thinking Mind practice exams.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/exam.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

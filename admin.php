@@ -71,6 +71,9 @@ $questions = $conn->query("SELECT * FROM questions ORDER BY id DESC");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Exam Simulator</title>
+    <meta name="description" content="Administration panel for managing assessment questions and content.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/admin.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

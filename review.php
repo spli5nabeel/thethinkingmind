@@ -36,6 +36,9 @@ $passed = $result['score_percentage'] >= PASSING_SCORE;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exam Review - Exam Simulator</title>
+    <meta name="description" content="Detailed answer review page for completed exams.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/review.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

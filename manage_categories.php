@@ -152,6 +152,9 @@ $total_categories = $categories->num_rows;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Categories - Exam Simulator</title>
+    <meta name="description" content="Administrative category management interface for The Thinking Mind.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://thethinkingmind.net/manage_categories.php">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .action-buttons-group {
