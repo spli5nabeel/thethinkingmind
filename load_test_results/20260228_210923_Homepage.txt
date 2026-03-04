@@ -1,0 +1,46 @@
+This is ApacheBench, Version 2.3 <$Revision: 1913912 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking thethinkingmind.net (be patient)
+Finished 2350 requests
+
+
+Server Software:        Apache
+Server Hostname:        thethinkingmind.net
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES128-GCM-SHA256,2048,128
+Server Temp Key:        ECDH X25519 253 bits
+TLS Server Name:        thethinkingmind.net
+
+Document Path:          /index.php
+Document Length:        3932 bytes
+
+Concurrency Level:      10
+Time taken for tests:   60.007 seconds
+Complete requests:      2350
+Failed requests:        0
+Total transferred:      9743100 bytes
+HTML transferred:       9240200 bytes
+Requests per second:    39.16 [#/sec] (mean)
+Time per request:       255.351 [ms] (mean)
+Time per request:       25.535 [ms] (mean, across all concurrent requests)
+Transfer rate:          158.56 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       67   82  12.3     80     238
+Processing:    54  172 208.3     67    1456
+Waiting:       54  171 208.4     66    1455
+Total:        126  254 208.3    150    1525
+
+Percentage of the requests served within a certain time (ms)
+  50%    150
+  66%    164
+  75%    244
+  80%    372
+  90%    606
+  95%    731
+  98%    858
+  99%    898
+ 100%   1525 (longest request)
