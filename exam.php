@@ -41,7 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_exam'])) {
         'total_questions' => $total_questions,
         'correct_answers' => $correct_answers,
         'score_percentage' => $score_percentage,
-        'answers' => $answers
+        'answers' => $answers,
+        'category' => $category,
+        'difficulty' => $difficulty
     ];
     
     // Redirect to review page

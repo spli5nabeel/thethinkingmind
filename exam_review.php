@@ -140,7 +140,8 @@ $conn = getDBConnection();
             </section>
 
             <div class="action-buttons">
-                <a href="categories.php" class="btn btn-primary">Take Another Exam</a>
+                <a href="pdf_export.php" class="btn btn-primary" title="Download your results as PDF">📥 Download as PDF</a>
+                <a href="categories.php" class="btn btn-secondary">Take Another Exam</a>
                 <a href="index.php" class="btn btn-secondary">Back to Home</a>
             </div>
         </main>
@@ -149,7 +150,5 @@ $conn = getDBConnection();
 </html>
 
 <?php 
-// Clear the session review data
-unset($_SESSION['exam_review']);
 $conn->close(); 
 ?>

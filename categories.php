@@ -3,6 +3,11 @@ require_once 'config.php';
 
 $conn = getDBConnection();
 
+$selected_type = isset($_GET['type']) ? $conn->real_escape_string($_GET['type']) : '';
+if (!in_array($selected_type, ['IT', 'Academic'], true)) {
+    $selected_type = '';
+}
+
 // Get all unique categories with question counts
 $categories = $conn->query("
     SELECT category, COUNT(*) as question_count, 
@@ -105,6 +110,7 @@ $categories = $conn->query("
             ?>
 
             <!-- TECH ASSESSMENTS SECTION -->
+            <?php if (!$selected_type || $selected_type === 'IT'): ?>
             <section class="assessment-section">
                 <div class="section-header">
                     <h2 class="section-title">💻 Tech Assessments</h2>
@@ -126,7 +132,7 @@ $categories = $conn->query("
                                 </span>
                             </div>
                             <div class="category-actions">
-                                <a href="category_detail.php?category=<?php echo urlencode($cat['category']); ?>" class="btn btn-primary">
+                                <a href="category_detail.php?category=<?php echo urlencode($cat['category']); ?>&type=IT" class="btn btn-primary">
                                     View Assessments
                                 </a>
                             </div>
@@ -137,8 +143,10 @@ $categories = $conn->query("
                     ?>
                 </div>
             </section>
+            <?php endif; ?>
 
             <!-- ACADEMIC ASSESSMENTS SECTION -->
+            <?php if (!$selected_type || $selected_type === 'Academic'): ?>
             <section class="assessment-section">
                 <div class="section-header">
                     <h2 class="section-title">📚 Academic Assessments</h2>
@@ -160,7 +168,7 @@ $categories = $conn->query("
                                 </span>
                             </div>
                             <div class="category-actions">
-                                <a href="category_detail.php?category=<?php echo urlencode($cat['category']); ?>" class="btn btn-primary">
+                                <a href="category_detail.php?category=<?php echo urlencode($cat['category']); ?>&type=Academic" class="btn btn-primary">
                                     View Assessments
                                 </a>
                             </div>
@@ -171,6 +179,7 @@ $categories = $conn->query("
                     ?>
                 </div>
             </section>
+            <?php endif; ?>
 
             <div class="exam-options">
                 <h3>Exam Settings</h3>

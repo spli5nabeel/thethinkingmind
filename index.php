@@ -41,17 +41,17 @@
 
             <div class="options-grid">
                 <div class="option-card">
-                    <div class="icon">✏️</div>
-                    <h3>Take Assessment</h3>
-                    <p>Test your knowledge by taking a focused exam in your subject area</p>
-                    <a href="categories.php" class="btn btn-primary">Get Started</a>
+                    <div class="icon">💻</div>
+                    <h3>Tech Assessments</h3>
+                    <p>Practice IT Certifications Questions</p>
+                    <a href="categories.php?type=IT" class="btn btn-primary">Get Started</a>
                 </div>
 
                 <div class="option-card">
-                    <div class="icon">⚙️</div>
-                    <h3>Administrator Access</h3>
-                    <p>Manage assessments, questions, and platform content</p>
-                    <a href="admin_login.php" class="btn btn-admin">Admin Portal</a>
+                    <div class="icon">📚</div>
+                    <h3>Academic Assessments</h3>
+                    <p>Practice academic subjects and strengthen your fundamentals</p>
+                    <a href="categories.php?type=Academic" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
 
@@ -62,6 +62,13 @@
                         <h3>Tools &amp; Utilities</h3>
                         <p>Browse utilities and add new tools for your workflow.</p>
                         <a href="tools_utilities.php" class="btn btn-secondary">Browse</a>
+                    </div>
+
+                    <div class="option-card">
+                        <div class="icon">⚙️</div>
+                        <h3>Administrator Access</h3>
+                        <p>Manage assessments, questions, and platform content.</p>
+                        <a href="admin_login.php" class="btn btn-admin">Admin Portal</a>
                     </div>
                 </div>
             </div>
