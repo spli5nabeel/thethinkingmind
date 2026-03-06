@@ -17,8 +17,12 @@ $question_count = max(5, min(50, $question_count));
 
 // Handle exam submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_exam'])) {
+    error_log("DEBUG EXAM: Handling POST submission");
     $student_name = $conn->real_escape_string($_POST['student_name']);
     $answers = $_POST['answers'] ?? [];
+    
+    error_log("DEBUG EXAM: Student name: " . $student_name);
+    error_log("DEBUG EXAM: Answers count: " . count($answers));
     
     $total_questions = count($answers);
     $correct_answers = 0;
@@ -46,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_exam'])) {
         'difficulty' => $difficulty
     ];
     
+    error_log("DEBUG EXAM: Attempting redirect to exam_review.php");
     // Redirect to review page
     header("Location: exam_review.php");
     exit();

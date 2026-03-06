@@ -4,17 +4,19 @@
     # Force HTTPS
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
 
-# Front controller routing without requiring strict mod_rewrite support
-DirectoryIndex router.php
-FallbackResource /router.php
-ErrorDocument 404 /router.php
+    # Front controller routing - route requests to router.php if file/directory doesn't exist
+    # Don't rewrite router.php itself to avoid infinite loops
+    # QSA flag preserves the query string including POST parameters
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !^/router\.php
+    RewriteRule ^(.*)$ router.php [QSA,L]
+</IfModule>
 
 # Prevent directory listing
 Options -Indexes
 
 # Prevent direct web access to internal/bootstrap files
-<FilesMatch "^(config|auth|config\.production)\.php$">
-    Require all denied
+<FilesMatch "^(config|auth|config\.production)\.php$">    Require all denied
 </FilesMatch>
