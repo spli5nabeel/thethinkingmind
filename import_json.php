@@ -73,11 +73,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['json_file'])) {
                     
                     // Map difficulty levels to database allowed values
                     $difficulty_map = [
+                        'beginner' => 'Easy',
                         'easy' => 'Easy',
-                        'medium' => 'Medium',
                         'intermediate' => 'Medium',
-                        'hard' => 'Hard',
-                        'advanced' => 'Hard'
+                        'medium' => 'Medium',
+                        'advanced' => 'Hard',
+                        'hard' => 'Hard'
                     ];
                     $raw_difficulty = !empty($q['difficulty']) ? strtolower(trim($q['difficulty'])) : 'medium';
                     $difficulty = $difficulty_map[$raw_difficulty] ?? 'Medium';
