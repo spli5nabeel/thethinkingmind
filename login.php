@@ -86,11 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p>Or <a href="guest.php">continue as guest</a></p>
                     </div>
 
-                    <div class="demo-credentials">
-                        <h4>Demo Accounts:</h4>
-                        <p><strong>Admin:</strong> username: <code>admin</code>, password: <code>admin123</code></p>
-                        <p><strong>Student:</strong> username: <code>student</code>, password: <code>student123</code></p>
-                    </div>
                 </div>
             </div>
         </main>

@@ -204,6 +204,7 @@ $activities = $conn->query("
                     <a href="my_results.php" class="btn btn-secondary">📊 View All Results</a>
                     <?php if ($user['role'] === 'admin'): ?>
                         <a href="admin.php" class="btn btn-admin">⚙️ Manage Questions</a>
+                        <a href="admin_assessments.php" class="btn btn-admin">📈 Assessment Reports</a>
                         <a href="manage_categories.php" class="btn btn-admin">📁 Manage Categories</a>
                     <?php endif; ?>
                 </div>

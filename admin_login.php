@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     
     if (empty($username_or_email) || empty($password)) {
-        $error = 'Please enter both username/email and password';
+        $error = 'Please enter your admin credentials.';
     } else {
         $result = login($username_or_email, $password);
         
