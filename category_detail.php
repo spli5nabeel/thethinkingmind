@@ -108,7 +108,7 @@ $difficulty_info = [
 <body>
     <div class="container">
         <header>
-            <h1><?php echo $category_icon; ?> <?php echo htmlspecialchars($category); ?> Assessments</h1>
+            <h1 class="category-detail-title"><?php echo $category_icon; ?> <?php echo htmlspecialchars($category); ?> Assessments</h1>
             <p class="subtitle">Choose a difficulty level to start your assessment</p>
             <a href="categories.php<?php echo $type ? '?type=' . urlencode($type) : ''; ?>" class="btn btn-back">← Back to Categories</a>
         </header>

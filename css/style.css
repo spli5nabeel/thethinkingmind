@@ -53,6 +53,11 @@ header h1 {
     letter-spacing: -0.5px;
 }
 
+/* Keep category detail heading compact for long category names */
+header h1.category-detail-title {
+    font-size: 1.25em;
+}
+
 .subtitle {
     font-size: 1.1em;
     opacity: 0.92;
@@ -1185,6 +1190,10 @@ footer {
     header h1 {
         font-size: 1.8em;
         margin-top: 50px;
+    }
+
+    header h1.category-detail-title {
+        font-size: 0.9em;
     }
     
     .btn-back {
