@@ -214,6 +214,21 @@ $difficulty_info = [
                     </p>
                 </div>
 
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label for="timerSelect">⏱️ Time Limit:</label>
+                    <select id="timerSelect" name="timer" class="form-control" style="margin-top: 10px; padding: 10px; border-radius: 8px; border: 1px solid #ddd; font-size: 1em;">
+                        <option value="0">No time limit</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30" selected>30 minutes (Recommended)</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">60 minutes</option>
+                        <option value="90">90 minutes</option>
+                    </select>
+                    <p style="margin-top: 10px; color: #999; font-size: 0.9em;">
+                        Set a time limit for this assessment
+                    </p>
+                </div>
+
                 <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px;">
                     <button type="button" class="btn btn-secondary" onclick="closeAssessmentModal()">Cancel</button>
                     <button type="submit" class="btn btn-primary">Start Assessment</button>
