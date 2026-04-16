@@ -47,6 +47,27 @@
                     <p>Create structured prompts for learning and assessments.</p>
                     <a href="ai_prompt_generator.php" class="btn btn-secondary">Open Tool</a>
                 </div>
+
+                <div class="option-card">
+                    <div class="icon">⚗️</div>
+                    <h3>Periodic Table</h3>
+                    <p>Browse all 118 elements with details — atomic mass, electron config, state and more.</p>
+                    <a href="periodic_table.php" class="btn btn-secondary">Open Tool</a>
+                </div>
+
+                <div class="option-card">
+                    <div class="icon">🔤</div>
+                    <h3>Word &amp; Character Counter</h3>
+                    <p>Paste text to count words, characters, sentences, paragraphs and reading time.</p>
+                    <a href="word_counter.php" class="btn btn-secondary">Open Tool</a>
+                </div>
+
+                <div class="option-card">
+                    <div class="icon">🔢</div>
+                    <h3>Number Base Converter</h3>
+                    <p>Convert between Binary, Octal, Decimal and Hexadecimal instantly.</p>
+                    <a href="number_base_converter.php" class="btn btn-secondary">Open Tool</a>
+                </div>
             </div>
         </main>
 
